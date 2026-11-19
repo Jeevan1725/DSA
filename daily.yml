@@ -1,0 +1,26 @@
+name: Daily DSA Update
+on:
+  schedule:
+    - cron: "0 2 * * *"   # Runs at 2 AM UTC daily
+  workflow_dispatch:      # Allows manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Append daily entry to log
+        run: |
+          echo "- $(date -u +'%Y-%m-%d') Practiced DSA" >> log.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add log.md
+          git diff --staged --quiet || git commit -m "docs: daily log $(date -u +%F)"
+          git push
