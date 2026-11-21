@@ -1,2 +1,3 @@
 - 2026-11-19 Practiced DSA
 - 2026-11-20 Practiced DSA
+- 2026-11-21 Practiced DSA
