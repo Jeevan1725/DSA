@@ -10,7 +10,7 @@ void odd(int n) {
     if (n % 2 != 0)
         cout << n << " ";
  
-    odd(n - 1);   // recursive call
+    odd(n - 1);   
 }
 
 int main() {
